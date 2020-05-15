@@ -21,7 +21,7 @@ class ServerFailure implements Failure {
   });
 
   static ServerFailure fromServerException(ServerException e) {
-    if (e.statusCode >= 400 && e.statusCode <= 403) {
+    if ((e?.statusCode?? 0) >= 400 && (e?.statusCode?? 0) <= 403) {
       return UnauthorizedServerFailure(
         code: e.code,
         message: e.message,
