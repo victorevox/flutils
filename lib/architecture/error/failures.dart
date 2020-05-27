@@ -84,7 +84,7 @@ class UnauthorizedServerFailure implements ServerFailure {
 }
 
 class UnknowFailure implements Failure {
-  String get code => ErrorCodes.unknownError.name;
+  String get code => "UnknowFailure";
 
   @override
   String message;
