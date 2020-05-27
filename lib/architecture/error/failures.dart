@@ -2,9 +2,15 @@ library failures;
 
 import 'package:flutils/architecture/architecture.dart';
 
-abstract class Failure {
+abstract class Failure /* implements Built<Failure, FailureBuilder> */ {
+  // Fields
+  // @nullable
   String get code;
+  // @nullable
   String get message;
+  // Failure._();
+
+  // factory Failure([void Function(FailureBuilder) updates]) = _$Failure;
 }
 
 class ServerFailure implements Failure {
@@ -78,22 +84,37 @@ class UnauthorizedServerFailure implements ServerFailure {
 }
 
 class UnknowFailure implements Failure {
-  String get code => "UnknowFailure";
+  String get code => ErrorCodes.unknownError.name;
 
   @override
   String message;
 
-  UnknowFailure({this.message});
+  UnknowFailure({this.message = "Unknown Error"});
 
-  static fromException(dynamic e) {
+  static fromException(dynamic originalException) {
+    String message;
     try {
-      String message = "Unknown Error Occurred";
-      if (e.message != null) {
-        message = e.message;
+      message = "Unknown Error Occurred";
+      if (originalException.notification != null) {
+        message = originalException.notification;
       }
       return UnknowFailure(message: message);
     } catch (e) {
-      return UnknowFailure();
+      try {
+        if (originalException.error != null) {
+          message = originalException.error.toString();
+        }
+        return UnknowFailure(message: message);
+      } catch (e) {
+        try {
+          if (originalException.message != null) {
+            message = originalException.message;
+          }
+          return UnknowFailure(message: message);
+        } catch (e) {
+          return UnknowFailure();
+        }
+      }
     }
   }
 
