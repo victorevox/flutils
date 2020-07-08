@@ -142,10 +142,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "2cde69257b70fa7a811df4fd55fe3a363b230517"
+      resolved-ref: "867ed388d32295b0c1e8e89c14e8e3e05f4a222e"
       url: "https://github.com/victorevox/json_http_client"
     source: git
-    version: "0.0.1"
+    version: "0.0.3"
   matcher:
     dependency: transitive
     description:
