@@ -1,3 +1,7 @@
+## [0.0.4] - 30/07/20
+
+* Update dependencies
+
 ## [0.0.3] - 21/07/20
 
 * Added "encoding" flags to `DateTimeSerializerPlugin` , now it also applies a custom encoding to ISO String

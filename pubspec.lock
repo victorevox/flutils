@@ -41,10 +41,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "9cba9117a5b6a0d6d3aa125e069fb7591d15fda3"
+      resolved-ref: "2907956ac375ad56e6f0e45a62818073be775521"
       url: "https://github.com/victorevox/auth_http_client.git"
     source: git
-    version: "0.0.1"
+    version: "0.0.2"
   boolean_selector:
     dependency: transitive
     description:
