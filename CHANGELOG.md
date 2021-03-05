@@ -1,3 +1,7 @@
+## [0.0.5] - 05/03/21
+
+* Compatible with `built_value: ^8.0.0`
+
 ## [0.0.4] - 30/07/20
 
 * Update dependencies

@@ -1,6 +1,6 @@
 name: flutils
 description: A new Flutter package project.
-version: 0.0.4
+version: 0.0.5
 author:
 homepage: https://github.com/victorevox/flutils
 
@@ -22,7 +22,7 @@ dependencies:
     git:
       url: https://github.com/victorevox/json_http_client
   shared_preferences: ^0.5.6+3
-  built_value: ^7.1.0
+  built_value: ^8.0.0
 
 dev_dependencies:
   flutter_test:
