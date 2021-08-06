@@ -1,20 +1,20 @@
 import 'package:built_value/serializer.dart';
 
 class BuiltForceNumberParsePlugin implements SerializerPlugin {
-  Object beforeSerialize(Object object, FullType specifiedType) {
+  Object? beforeSerialize(Object? object, FullType specifiedType) {
     return object;
     // if (!(object is DateTime)) return object;
     // return DateTime.parse(object as String).toUtc().microsecondsSinceEpoch;
     // return (object as DateTime).toIso8601String();
   }
 
-  Object afterSerialize(Object object, FullType specifiedType) {
+  Object? afterSerialize(Object? object, FullType specifiedType) {
     // if ((specifiedType.root != DateTime)) return object;
     // return DateTime.fromMillisecondsSinceEpoch(object).toIso8601String();
     return object;
   }
 
-  Object beforeDeserialize(Object object, FullType specifiedType) {
+  Object? beforeDeserialize(Object? object, FullType specifiedType) {
     if (specifiedType.root != num && specifiedType.root != int &&  specifiedType.root != double) return object;
     if (object is num) {
       return object;
@@ -46,5 +46,5 @@ class BuiltForceNumberParsePlugin implements SerializerPlugin {
     return object;
   }
 
-  Object afterDeserialize(Object object, FullType specifiedType) => object;
+  Object? afterDeserialize(Object? object, FullType specifiedType) => object;
 }

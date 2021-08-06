@@ -6,9 +6,9 @@ import 'package:redux_dev_tools/redux_dev_tools.dart';
 
 expectDispatched<State, Action>(
   Store<State> store, {
-  Function(Action) verifier,
+  Function(Action)? verifier,
 }) {
-  final Function cb = expectAsync2((state, action) {
+  final Function cb = expectAsync2((dynamic state, dynamic action) {
     if (verifier != null) {
       verifier(action);
     }
@@ -27,8 +27,8 @@ expectDispatched<State, Action>(
 
 expectDispatchedSync<State, Action>(
   DevToolsStore<State> store, {
-  Function(Action) verifier,
-  int count,
+  Function(Action)? verifier,
+  int? count,
 }) {
   final actionStack = store.devToolsState.stagedActions.whereType<Action>();
   expect(actionStack.isNotEmpty, true, reason: "Expected action dispatched");
@@ -54,8 +54,8 @@ expectNoDispatchedSync<State, Action>(
 expectDispatchedDelayed<State, Action>(
   DevToolsStore<State> store, {
   Duration duration = const Duration(milliseconds: 400),
-  Function(Action) verifier,
-  int count,
+  Function(Action)? verifier,
+  int? count,
 }) async {
   final cb = expectAsync0(() {
     final actionStack = store.devToolsState.stagedActions.whereType<Action>();

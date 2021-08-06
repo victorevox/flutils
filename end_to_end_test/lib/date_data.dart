@@ -12,18 +12,18 @@ import 'serializers.dart';
 part 'date_data.g.dart';
 
 abstract class DateData implements Built<DateData, DateDataBuilder> {
-  DateTime get date;
-  String get text;
+  DateTime? get date;
+  String? get text;
 
   DateData._();
 
-  factory DateData([void Function(DateDataBuilder) updates]) = _$DateData;
+  factory DateData([void Function(DateDataBuilder)? updates]) = _$DateData;
 
   String toJson() {
     return json.encode(serializers.serializeWith(DateData.serializer, this));
   }
 
-  static DateData fromJson(String jsonString) {
+  static DateData? fromJson(String jsonString) {
     return serializers.deserializeWith(DateData.serializer, json.decode(jsonString));
   }
 

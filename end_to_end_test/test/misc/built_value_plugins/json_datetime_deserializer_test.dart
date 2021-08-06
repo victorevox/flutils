@@ -9,12 +9,12 @@ void main() {
     }""";
 
   test("decode", () {
-    final data = DateData.fromJson(jsonString);
+    final data = DateData.fromJson(jsonString)!;
     expect(data.date, DateTime.parse(isoDateString));
   });
 
   test("encode", () {
-    final encoded = DateData.fromJson(jsonString).toJson();
+    final encoded = DateData.fromJson(jsonString)!.toJson();
     expect(encoded.indexOf(isoDateString) >= 0, true);
   });
 }

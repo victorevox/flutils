@@ -4,11 +4,11 @@ import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 
 class ServerException implements Exception {
-  final String message;
-  final String code;
-  final int statusCode;
+  final String? message;
+  final String? code;
+  final int? statusCode;
 
-  ServerException({@required this.message, this.code = "ServerException", this.statusCode});
+  ServerException({required this.message, this.code = "ServerException", this.statusCode});
 
   static ServerException fromResponse(http.Response response) {
     if (!(response is http.Response)) {
@@ -17,7 +17,7 @@ class ServerException implements Exception {
     try {
       final decoded = jsonDecode(response.body);
       final Map<String, dynamic> error = decoded["error"];
-      final String message = error["message"];
+      final String? message = error["message"];
       final int statusCode = error["statusCode"] ?? response.statusCode;
       return ServerException(
         message: message,

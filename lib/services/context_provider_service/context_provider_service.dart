@@ -9,7 +9,7 @@ abstract class ContextProviderService {
 class ContextProviderServiceImpl implements ContextProviderService {
   ContextProviderServiceImpl();
 
-  BuildContext _context;
+  BuildContext? _context;
 
   @override
   get context => _context;

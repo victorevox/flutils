@@ -15,9 +15,9 @@ class _$DateDataSerializer implements StructuredSerializer<DateData> {
   final String wireName = 'DateData';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, DateData object,
+  Iterable<Object?> serialize(Serializers serializers, DateData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'date',
       serializers.serialize(object.date,
           specifiedType: const FullType(DateTime)),
@@ -29,23 +29,23 @@ class _$DateDataSerializer implements StructuredSerializer<DateData> {
   }
 
   @override
-  DateData deserialize(Serializers serializers, Iterable<Object> serialized,
+  DateData deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new DateDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'date':
           result.date = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'text':
           result.text = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -56,11 +56,11 @@ class _$DateDataSerializer implements StructuredSerializer<DateData> {
 
 class _$DateData extends DateData {
   @override
-  final DateTime date;
+  final DateTime? date;
   @override
-  final String text;
+  final String? text;
 
-  factory _$DateData([void Function(DateDataBuilder) updates]) =>
+  factory _$DateData([void Function(DateDataBuilder)? updates]) =>
       (new DateDataBuilder()..update(updates)).build();
 
   _$DateData._({this.date, this.text}) : super._() {
@@ -100,22 +100,22 @@ class _$DateData extends DateData {
 }
 
 class DateDataBuilder implements Builder<DateData, DateDataBuilder> {
-  _$DateData _$v;
+  _$DateData? _$v;
 
-  DateTime _date;
-  DateTime get date => _$this._date;
-  set date(DateTime date) => _$this._date = date;
+  DateTime? _date;
+  DateTime? get date => _$this._date;
+  set date(DateTime? date) => _$this._date = date;
 
-  String _text;
-  String get text => _$this._text;
-  set text(String text) => _$this._text = text;
+  String? _text;
+  String? get text => _$this._text;
+  set text(String? text) => _$this._text = text;
 
   DateDataBuilder();
 
   DateDataBuilder get _$this {
     if (_$v != null) {
-      _date = _$v.date;
-      _text = _$v.text;
+      _date = _$v!.date;
+      _text = _$v!.text;
       _$v = null;
     }
     return this;
@@ -130,7 +130,7 @@ class DateDataBuilder implements Builder<DateData, DateDataBuilder> {
   }
 
   @override
-  void update(void Function(DateDataBuilder) updates) {
+  void update(void Function(DateDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

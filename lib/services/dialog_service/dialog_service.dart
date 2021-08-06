@@ -5,24 +5,24 @@ import '../../flutils.dart';
 
 abstract class DialogService {
   showDialog({
-    @required String title,
-    @required String description,
-    List<Widget> contentList,
+    required String title,
+    required String description,
+    List<Widget>? contentList,
   });
 }
 
 class DialogServiceImpl implements DialogService {
   // final GlobalKey<NavigatorState> navigationKey;
   final ContextProviderService contextProvider;
-  Widget Function(String title) _titleBuilder;
-  Widget Function(String message) _messageBuilder;
-  Widget Function(Widget content) _customWrapper;
+  late Widget Function(String title) _titleBuilder;
+  late Widget Function(String message) _messageBuilder;
+  late Widget Function(Widget content) _customWrapper;
 
   DialogServiceImpl({
-    @required this.contextProvider,
-    Widget Function(String title) titleBuilder,
-    Widget Function(String message) messageBuilder,
-    Widget Function(Widget content) customWrapper,
+    required this.contextProvider,
+    Widget Function(String title)? titleBuilder,
+    Widget Function(String message)? messageBuilder,
+    Widget Function(Widget content)? customWrapper,
   }) {
     _titleBuilder = titleBuilder ??
         (title) => Text(
@@ -52,9 +52,9 @@ class DialogServiceImpl implements DialogService {
   }
 
   void showDialog(
-      {@required String title,
-      @required String description,
-      List<Widget> contentList}) {
+      {required String title,
+      required String description,
+      List<Widget>? contentList}) {
     // final context = navigationKey.currentState.context;
     List<Widget> list = [
       _titleBuilder(title),

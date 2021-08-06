@@ -5,9 +5,9 @@ import 'package:flutils/architecture/architecture.dart';
 abstract class Failure /* implements Built<Failure, FailureBuilder> */ {
   // Fields
   // @nullable
-  String get code;
+  String? get code;
   // @nullable
-  String get message;
+  String? get message;
   // Failure._();
 
   // factory Failure([void Function(FailureBuilder) updates]) = _$Failure;
@@ -15,10 +15,10 @@ abstract class Failure /* implements Built<Failure, FailureBuilder> */ {
 
 class ServerFailure implements Failure {
   @override
-  String code;
+  String? code;
   @override
-  String message;
-  int statusCode;
+  String? message;
+  int? statusCode;
 
   ServerFailure({
     this.code,
@@ -56,13 +56,13 @@ class ServerFailure implements Failure {
 
 class UnauthorizedServerFailure implements ServerFailure {
   @override
-  String code;
+  String? code;
 
   @override
-  String message;
+  String? message;
 
   @override
-  int statusCode;
+  int? statusCode;
 
   UnauthorizedServerFailure({
     this.code,
@@ -87,12 +87,12 @@ class UnknowFailure implements Failure {
   String get code => "UnknowFailure";
 
   @override
-  String message;
+  String? message;
 
   UnknowFailure({this.message = "Unknown Error"});
 
   static fromException(dynamic originalException) {
-    String message;
+    String? message;
     try {
       message = "Unknown Error Occurred";
       if (originalException.notification != null) {

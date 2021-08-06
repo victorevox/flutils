@@ -1,8 +1,8 @@
 class CacheableItem<T> {
   final bool loading;
-  final int timestamp;
+  final int? timestamp;
   final bool errored;
-  final T data;
+  final T? data;
 
   CacheableItem({
     this.loading = false,
@@ -33,10 +33,10 @@ class CacheableItem<T> {
 
 
   CacheableItem<T> copyWith({
-    bool loading,
-    int timestamp,
-    bool errored,
-    T data,
+    bool? loading,
+    int? timestamp,
+    bool? errored,
+    T? data,
   }) {
     return CacheableItem<T>(
       loading: loading ?? this.loading,
